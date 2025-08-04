@@ -5,7 +5,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" }); // Añade `variable` aquí
 
 export const metadata: Metadata = {
   title: "Motordil Comparador y Subastas",
@@ -19,15 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
-      <head>
-        <style>{`
-html {
-  font-family: ${inter.style.fontFamily};
-  --font-sans: ${inter.variable};
-}
-        `}</style>
-      </head>
+    <html lang="es" suppressHydrationWarning className={inter.variable}>
+      <head></head>
       <body className={cn(inter.className, "bg-white dark:bg-gray-950")}>
         <ThemeProvider
           attribute="class"
